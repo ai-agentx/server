@@ -22,8 +22,10 @@ from agents import (
     set_default_openai_client,
     set_tracing_disabled,
 )
+from agents.items import ItemHelpers
 from agents.model_settings import ModelSettings
 from agents.result import RunResult
+from agents.tool import function_tool
 from openai import AsyncOpenAI
 
 BASE_URL = os.getenv("AGENTX_BASE_URL") or "https://api.openai.com/v1"
@@ -107,8 +109,6 @@ app = FastAPI(title="Agent REST API", description="REST API for Agent framework"
 
 
 def load_available_tools():
-    from agents.tool import function_tool
-
     @function_tool(name_override="echo", description_override="Echo back the input")
     async def echo_tool(context: RunContextWrapper, input: str) -> str:
         return f"Echo: {input}"
@@ -152,7 +152,7 @@ async def create_agent(agent_data: CreateAgentRequest):
         handoff_description=agent_data.handoff_description,
         model=OpenAIChatCompletionsModel(model=agent_data.model, openai_client=client),
         model_settings=model_settings,
-        #tools=tools
+        tools=tools
     )
 
     agents_db[agent_id] = agent
@@ -223,7 +223,6 @@ async def run_agent(agent_id: str, run_request: RunAgentRequest):
             context=context
         )
 
-        from agents.items import ItemHelpers
         text_result = ItemHelpers.text_message_outputs(result.new_items)
 
         return RunAgentResponse(
@@ -231,7 +230,7 @@ async def run_agent(agent_id: str, run_request: RunAgentRequest):
             result=text_result,
         )
     except Exception as e:
-        print(f"Error running agent: {str(e)}")
+        print(f"ERROR:    {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error running agent: {str(e)}")
 
 
