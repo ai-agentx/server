@@ -26,13 +26,12 @@ from agents.model_settings import ModelSettings
 from agents.result import RunResult
 from openai import AsyncOpenAI
 
-BASE_URL = os.getenv("AGENTX_BASE_URL") or "https://api.siliconflow.cn/v1"
+BASE_URL = os.getenv("AGENTX_BASE_URL") or "https://api.openai.com/v1"
 API_KEY = os.getenv("AGENTX_API_KEY") or "YOUR_KEY"
-MODEL_NAME = os.getenv("AGENTX_MODEL_NAME") or "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
 
-if not BASE_URL or not API_KEY or not MODEL_NAME:
+if not BASE_URL or not API_KEY:
     raise ValueError(
-        "Please set EXAMPLE_BASE_URL, EXAMPLE_API_KEY, EXAMPLE_MODEL_NAME via env var or code."
+        "Please set EXAMPLE_BASE_URL, EXAMPLE_API_KEY via env var or code."
     )
 
 client = AsyncOpenAI(
@@ -151,7 +150,7 @@ async def create_agent(agent_data: CreateAgentRequest):
         name=agent_data.name,
         instructions=agent_data.instructions,
         handoff_description=agent_data.handoff_description,
-        model=OpenAIChatCompletionsModel(model=MODEL_NAME, openai_client=client),
+        model=OpenAIChatCompletionsModel(model=agent_data.model, openai_client=client),
         model_settings=model_settings,
         #tools=tools
     )

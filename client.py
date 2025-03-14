@@ -1,7 +1,16 @@
+import os
 import requests
 import json
+
 from typing import Dict, List, Any, Optional, Union
 from pydantic import BaseModel
+
+MODEL_NAME = os.getenv("AGENTX_MODEL_NAME") or "gpt-4"
+
+if not MODEL_NAME:
+    raise ValueError(
+        "Please set EXAMPLE_MODEL_NAME via env var or code."
+    )
 
 
 class AgentClient:
@@ -93,7 +102,7 @@ if __name__ == "__main__":
     agent = client.create_agent(
         name="Assistant",
         instructions="You are a helpful AI assistant. Answer user questions concisely and accurately.",
-        model="deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+        model=MODEL_NAME,
         model_settings={"temperature": 0.7},
         tools=["echo"] if "echo" in [t["name"] for t in tools] else []
     )
