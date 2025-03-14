@@ -27,7 +27,7 @@ from agents.result import RunResult
 from openai import AsyncOpenAI
 
 BASE_URL = os.getenv("AGENTX_BASE_URL") or "https://api.siliconflow.cn/v1"
-API_KEY = os.getenv("AGENTX_API_KEY") or "sk-woxlhyqhnegbgenizaygfmquejwhcajmicqhwptsfwnwxnki"
+API_KEY = os.getenv("AGENTX_API_KEY") or "YOUR_KEY"
 MODEL_NAME = os.getenv("AGENTX_MODEL_NAME") or "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
 
 if not BASE_URL or not API_KEY or not MODEL_NAME:

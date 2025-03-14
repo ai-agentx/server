@@ -1,6 +1,6 @@
-# AgentX
+# agentx
 
-AgentX provides a REST API wrapper for the openai agents framework, allowing you to create, manage, and run agents via HTTP endpoints.
+**agentx** provides a REST API wrapper for the openai agents framework, allowing you to create, manage, and run agents via HTTP endpoints.
 
 ## Features
 
@@ -78,3 +78,7 @@ result = client.run_agent(
 )
 print(result["result"])
 ```
+
+## Reference
+
+- [ruff](https://github.com/astral-sh/ruff)
