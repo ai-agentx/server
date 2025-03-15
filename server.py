@@ -97,7 +97,7 @@ async def lifespan(app: FastAPI):
     agents_db.clear()
 
 
-app = FastAPI(title="agentx", description="rest api wrapper for the multi-agent framework", lifespan=lifespan)
+app = FastAPI(title="agentx", description="rest api wrapper for the agent framework", lifespan=lifespan)
 
 
 def load_available_tools():

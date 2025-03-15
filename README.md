@@ -1,6 +1,6 @@
 # agentx
 
-**agentx** provides a rest api wrapper for the multi-agent framework, allowing you to create, manage, and run agents via http endpoints.
+**agentx** provides a rest api wrapper for the agent framework, allowing you to create, manage, and run agents via http endpoints.
 
 ## Features
 
