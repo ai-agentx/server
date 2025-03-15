@@ -25,11 +25,7 @@
 
 ## Usage
 
-### Running the Server
-
-Start the server with:
-
-```
+```bash
 python server.py
 ```
 
@@ -38,6 +34,7 @@ The server will be available at http://localhost:9090 by default.
 ### API Endpoints
 
 #### Tools
+
 - `GET /tools` - List all available tools
 
 #### Agents
@@ -51,7 +48,7 @@ The server will be available at http://localhost:9090 by default.
 
 ### Docker Deployment
 
-```
+```bash
 docker-compose up -d
 ```
 
