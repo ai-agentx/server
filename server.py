@@ -1,30 +1,22 @@
-from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-from typing import List, Dict, Any, Optional, Union, TypeVar, Generic
+from typing import List, Dict, Any, Optional, TypeVar
 from contextlib import asynccontextmanager
 import uuid
-import asyncio
 import uvicorn
 import os
-import json
-from typing import Type
 
 from agents import (
     Agent,
-    InputGuardrail,
-    ModelSettings,
     OpenAIChatCompletionsModel,
-    OutputGuardrail,
     RunContextWrapper,
     Runner,
-    Tool,
     set_default_openai_api,
     set_default_openai_client,
     set_tracing_disabled,
 )
 from agents.items import ItemHelpers
 from agents.model_settings import ModelSettings
-from agents.result import RunResult
 from agents.tool import function_tool
 from openai import AsyncOpenAI
 
@@ -105,7 +97,7 @@ async def lifespan(app: FastAPI):
     agents_db.clear()
 
 
-app = FastAPI(title="Agent REST API", description="REST API for Agent framework", lifespan=lifespan)
+app = FastAPI(title="agentx", description="rest api wrapper for the multi-agent framework", lifespan=lifespan)
 
 
 def load_available_tools():
@@ -118,7 +110,7 @@ def load_available_tools():
 
 @app.get("/")
 async def root():
-    return {"message": "Agent REST API"}
+    return {"message": "agentx"}
 
 
 @app.get("/tools", response_model=List[ToolModel])

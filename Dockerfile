@@ -1,14 +1,16 @@
-version: '3'
+FROM python:3.10-slim
 
-services:
-  agent-api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
-    environment:
-      - PORT=8000
-    volumes:
-      - ./app:/app
-    restart: unless-stopped
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Expose the port
+EXPOSE 9090
+
+# Run the application
+CMD ["python", "server.py"]

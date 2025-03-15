@@ -1,6 +1,6 @@
 # agentx
 
-**agentx** provides a REST API wrapper for the openai agents framework, allowing you to create, manage, and run agents via HTTP endpoints.
+**agentx** provides a rest api wrapper for the multi-agent framework, allowing you to create, manage, and run agents via http endpoints.
 
 ## Features
 
@@ -53,30 +53,6 @@ The server will be available at http://localhost:9090 by default.
 
 ```
 docker-compose up -d
-```
-
-## Python Client
-
-```python
-from agent_client import AgentClient
-
-client = AgentClient()
-
-# Create an agent
-agent = client.create_agent(
-    name="Assistant",
-    instructions="You are a helpful AI assistant.",
-    model="gpt-4",
-    tools=["echo"]
-)
-
-# Run the agent
-result = client.run_agent(
-    agent_id=agent["id"],
-    input="Hello, can you help me?",
-    context={"user_name": "Alice"}
-)
-print(result["result"])
 ```
 
 ## Reference

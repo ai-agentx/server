@@ -1,9 +1,7 @@
 import os
 import requests
-import json
 
-from typing import Dict, List, Any, Optional, Union
-from pydantic import BaseModel
+from typing import Dict, List, Any, Optional
 
 MODEL_NAME = os.getenv("AGENTX_MODEL_NAME") or "gpt-4"
 
