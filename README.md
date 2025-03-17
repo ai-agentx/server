@@ -12,16 +12,18 @@
 
 ## Installation
 
-1. Clone repository:
-   ```
-   git clone https://github.com/ai-agentx/server.git
-   cd server
-   ```
+### Clone repository
 
-2. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+```bash
+git clone https://github.com/ai-agentx/server.git
+cd server
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
