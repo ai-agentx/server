@@ -57,6 +57,6 @@ docker-compose up -d
 ## Reference
 
 - [mcp-agent](https://github.com/lastmile-ai/mcp-agent)
-- [openai-agents-mcp](https://github.com/lastmile-ai/openai-agents-mcp)
+- [openai-agents-mcp](https://github.com/lastmile-ai/openai-agents-mcp/commit/0f0cdd0c7c40bbe15bba27fc8dd3420037288e47#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5)
 - [openai-agents-python](https://github.com/openai/openai-agents-python)
 - [ruff](https://github.com/astral-sh/ruff)
